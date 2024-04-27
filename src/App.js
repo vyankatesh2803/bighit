@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
+import CartPage from "./pages/CartPage";
+import LandingPage from './pages/LandingPage';
+import ProductPage from "./pages/ProductPage";
+import NoPage from "./pages/NoPage";
+
 
 function App() {
+  // const [productList, setProductList] = useState([]);
+
+  // useEffect(() => {
+  //   // Fetch data from the API
+  //   fetch('https://dummyjson.com/products')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log(data)
+  //       setProductList(data);
+  //     })
+  //     .catch(error => console.error('Error fetching data:', error));
+  // }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* <Route path="/"> */}
+          <Route index element={ <LandingPage/>} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="products/:id" element={<ProductPage />} />
+          <Route path="*" element={<NoPage />} />
+        {/* </Route> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
